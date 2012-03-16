@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+<!--  	<appender name="all" class="org.apache.log4j.FileAppender">
+		<param name="File" value="util1.log" />
+		<param name="Append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-4r [%t] %-5p %c %x - %m%n" />
+		</layout>
+	</appender>
+	<appender name="util" class="org.apache.log4j.FileAppender">
+		<param name="File" value="util.log" />
+		<param name="Append" value="true" />
+				<param name="Facility" value="user" />
+		<param name="FacilityPrinting" value="false" />
+		<param name="Header" value="false" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelMatchFilter">
+			<param name="LevelToMatch" value="error" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+		<filter class="org.apache.log4j.varia.DenyAllFilter" />
+	</appender> -->
+
+	<appender name="syslog" class="org.apache.log4j.net.SyslogAppender">
+		<param name="SyslogHost" value="127.0.0.1" />
+		<param name="Facility" value="local2" />
+		<param name="FacilityPrinting" value="false" />
+		<param name="Header" value="false" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+
+	<logger name="auditlogger">
+		<level value="ALL" />
+		<appender-ref ref="syslog" />
+	</logger>
+	<root>
+		<level value="info" />
+	</root>
+</log4j:configuration>
