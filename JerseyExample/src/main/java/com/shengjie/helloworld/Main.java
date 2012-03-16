@@ -20,7 +20,9 @@ public class Main {
 
     protected static HttpServer startServer() throws IOException {
         System.out.println("Starting grizzly...");
+        // find the resources from the package
         ResourceConfig rc = new PackagesResourceConfig("com.shengjie.helloworld.resources");
+        // adding the base_uri plus all the resources
         return GrizzlyServerFactory.createHttpServer(BASE_URI, rc);
     }
 
